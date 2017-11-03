@@ -1,0 +1,3 @@
+- More descriptive readme along with some instructions . ;-)
+- Release with binaries
+- and so much more
