@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" packages="net.giraudy.collagr">
+    <Appenders>
+        <File name="CollagrLog" fileName="${sys:CollagrLogFilename}">
+            <PatternLayout pattern="%d [%p] %c:%L - %m%n"/>
+        </File>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d [%p] %c:%L - %m%n"/>
+        </Console>
+        <TextAreaAppender name="JavaFXLogger">
+            <PatternLayout pattern="%m%n"/>
+        </TextAreaAppender>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console" level="trace" />
+            <AppenderRef ref="CollagrLog" level="trace" />
+            <AppenderRef ref="JavaFXLogger" level="trace"/>
+        </Root>
+    </Loggers>
+</Configuration>
