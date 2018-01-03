@@ -227,6 +227,7 @@ public class UIController implements Initializable {
                 System.out.println("textfield changed from " + oldValue + " to " + newValue);
             }
             setShadowImage();
+            setTotalImages();
         });
         rowsField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -235,10 +236,7 @@ public class UIController implements Initializable {
                 System.out.println("textfield changed from " + oldValue + " to " + newValue);
             }
             setShadowImage();
-            totalImages.setText(
-                    "/ "
-                    + String.valueOf(Integer.parseInt(rowsField.getText()) * Integer.parseInt(colsField.getText()))
-            );
+            setTotalImages();
         });
         colsField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -247,10 +245,7 @@ public class UIController implements Initializable {
                 System.out.println("textfield changed from " + oldValue + " to " + newValue);
             }
             setShadowImage();
-            totalImages.setText(
-                    "/ "
-                    + String.valueOf(Integer.parseInt(rowsField.getText()) * Integer.parseInt(colsField.getText()))
-            );
+            setTotalImages();
         });
         borderField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
@@ -271,6 +266,7 @@ public class UIController implements Initializable {
         t1 = null;
 
         setShadowImage();
+        setTotalImages();
     }
 
     private void setShadowImage() {
@@ -325,5 +321,19 @@ public class UIController implements Initializable {
         if (t2 != null) {
             t2.interrupt();
         }
+    }
+
+    private void setTotalImages() {
+        int total = Integer.parseInt(rowsField.getText()) * Integer.parseInt(colsField.getText());
+        int current = Integer.parseInt(imagesField.getText());
+        if (current > total) {
+            totalImages.setTextFill(javafx.scene.paint.Color.web("#ff0000"));
+        } else {
+            totalImages.setTextFill(javafx.scene.paint.Color.web("#000000"));
+        }
+        totalImages.setText(
+                "/ "
+                + String.valueOf(total)
+        );
     }
 }
