@@ -23,5 +23,13 @@ Desktop application that generates a collage from collections of pictures.
 * **output directory**: where collages are written
 * **out file prefix**: output file names are: <prefix><write ratio>.png
 * **write ratio**: image size reducing factor(s) to avoid super large files
-  
+
+## build it!
+
+mvn clean compile jfx:jar
+__produces a runnable jar file: target/jfx/Collagr2-1.0-SNAPSHOT-jfx.jar__
+
+mvn clean compile jfx:native
+__produces a native app, installer in target/jfx/native__
+
 -- more to come!
