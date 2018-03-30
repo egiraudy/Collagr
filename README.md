@@ -26,10 +26,10 @@ Desktop (JavaFX) application that generates a collage from collections of pictur
 
 ## build it!
 
-mvn clean compile jfx:jar
+mvn clean compile jfx:jar<br/>
    _produces a runnable jar file: target/jfx/Collagr2-1.0-SNAPSHOT-jfx.jar_
 
-mvn clean compile jfx:native
+mvn clean compile jfx:native<br/>
    _produces a native app, installer in target/jfx/native_
 
 -- more to come!
