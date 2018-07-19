@@ -120,9 +120,10 @@ public class Collage {
                 try {
                     idxImg++;
                     if (f != null) {
-                        BufferedImage img = ImageIO.read(f);
-                        int h = img.getHeight() / readDivRatio;
-                        int w = img.getWidth() / readDivRatio;
+                        //BufferedImage img = ImageIO.read(f);
+                        ImgDim dims = Utils.getImageDim(f.getAbsolutePath());
+                        int h = dims.getHeight() / readDivRatio;
+                        int w = dims.getWidth() / readDivRatio;
                         if (w > r.getWidth()) {
                             r.setWidth(w);
                         }
