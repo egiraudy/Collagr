@@ -30,7 +30,7 @@ public class Utils {
                 reader.setInput(stream);
                 int width = reader.getWidth(reader.getMinIndex());
                 int height = reader.getHeight(reader.getMinIndex());
-                result = new ImgDim(width, height);
+                result = new ImgDim(height, width);
             } finally {
                 reader.dispose();
             }
