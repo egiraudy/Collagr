@@ -57,15 +57,15 @@ public class Collagr {
         LOGGER.info("Starting to build collage...");
         LOGGER.info("   building file list...");
         List<File> filesCollections = getFiles(srcPath, rows, cols, images, patterns);
-        
+
         LOGGER.info("   More initialization...");
         collage = new Collage(rows, cols, readRatio, spacing, border);
 
         int squareSize = 25;
         int space = 5;
         // first shadow image, just add squares
-        int width = cols * (squareSize+space) + space * 2;
-        int height = rows * (squareSize+space) + space * 2;
+        int width = cols * (squareSize + space) + space * 2;
+        int height = rows * (squareSize + space) + space * 2;
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = image.createGraphics();
         g2d.setColor(Color.WHITE);
@@ -107,9 +107,9 @@ public class Collagr {
         if (previewMode) {
             return;
         }
-        
+
         int[] saveRatios = new int[writeRatios.length];
-        for (int i=0; i<writeRatios.length;i++) {
+        for (int i = 0; i < writeRatios.length; i++) {
             saveRatios[i] = Integer.parseInt(writeRatios[i]);
         }
         LOGGER.info("   Doing it...");
@@ -126,9 +126,15 @@ public class Collagr {
         List<File> files = new ArrayList();
 
         int i = 1;
-        for (int r = 0; i<=maxImages && r < rows; r++) {
-            for (int c = 0; i<=maxImages && c < cols; c++) {
-                File f = new File(srcPath + File.separator + patterns[r] + i++ + ".png");
+        for (int r = 0; i <= maxImages && r < rows; r++) {
+            for (int c = 0; i <= maxImages && c < cols; c++) {
+                File f;
+                if (patterns[r].contains("%")) {
+                    f = new File(srcPath + File.separator + String.format(patterns[r] + ".png", i++));
+                } else {
+                    f = new File(srcPath + File.separator + patterns[r] + i++ + ".png");
+
+                }
                 if (f.exists() && !f.isDirectory()) {
                     files.add(f);
                 }
@@ -140,6 +146,6 @@ public class Collagr {
         }
         return files;
     }
-    
+
     private static Collage collage;
 }
