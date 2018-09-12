@@ -94,6 +94,7 @@ public class Collage {
         }
         ctrl.setStatus("Adding pictures");
         addPictures();
+        Utils.writeCustomData(image, "something", "Etienne Giraudy");
         if (Thread.interrupted()) {
             // We've been interrupted: no more crunching.
             LOGGER.info("@@@@@@@@@ interrupted!");

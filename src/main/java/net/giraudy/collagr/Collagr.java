@@ -75,7 +75,7 @@ public class Collagr {
 
         // then read files and update the shadow image with missing squares
         int f = 0;
-        int x = space, y = space;
+        int x, y = space;
         File[] files = filesCollections.toArray(new File[0]);
         for (int r = 0; r < rows; r++) {
             x = space;
@@ -122,7 +122,6 @@ public class Collagr {
     private static List<File> getFiles(String srcPath, int rows, int cols, int maxImages, String[] patterns) {
 
         // pattern:  myfile[1..25]
-        File dir = new File(srcPath);
         List<File> files = new ArrayList();
 
         int i = 1;
