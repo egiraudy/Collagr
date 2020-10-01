@@ -1,0 +1,6 @@
+
+target/
+logs/
+.gradle/
+.java-version
+gradle/
